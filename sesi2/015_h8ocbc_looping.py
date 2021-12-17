@@ -7,10 +7,11 @@ numbers = [
 ]
 
 for x in numbers:
-    if x % 2 == 0: print(x)
+    if x % 2 == 0: print(x, end=' ')
     if x == 918:
+        print('\n')
         print("Done")
         break
-    
+
 # Link Github:
 # https://github.com/pieter17/fsd-ocbc-python
