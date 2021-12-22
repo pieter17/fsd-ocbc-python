@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Application Home Page</title>
+  </head>
+  <body>
+    <h2>Hello {{name}}!</h2>
+    <h3>{{age}} years old</h3>
+    <ul>
+      {% for pet in pet_list %}
+      <li>{{pet}}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
