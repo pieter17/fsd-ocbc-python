@@ -1,0 +1,193 @@
+swagger: '2.0'
+info:
+  description: This is the swagger file that goes with our server code
+  version: '1.0.0'
+  title: Swagger Rest Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+  /region:
+    get:
+      operationId: regions.read_all
+      tags:
+        - Region
+      summary: Read the entire set of Region
+      description: Read the entire set of Region
+      responses:
+        200:
+          description: Successfully read region set operation
+          schema:
+            type: array
+            items:
+              properties:
+                regionid:
+                  type: integer
+                  description: Id of the region
+                region:
+                  type: string
+                  description: name of the region
+                avocados:
+                  type: array
+                  items:
+                    properties:
+                      date:
+                        type: string
+                        description: date of avocado this note is associated with
+                      avgprice:
+                        type: number
+                        description: avgprice of this avocado
+                      totalvol:
+                        type: integer
+                        description: totalvol of this avocado
+                      avo_a:
+                        type: integer
+                        description: Create/Update timestamp of this note
+                      avo_b:
+                        type: number
+                        description: avo_b of avocado
+                      avo_c:
+                        type: number
+                        description: avo_c of avocad0
+                      type:
+                        type: integer
+                        description: tpe id of avocado
+                      regionid:
+                        type: integer
+                        description: region id of avocado
+
+    post:
+      operationId: regions.create
+      tags:
+        - Regions
+      summary: Create a regions
+      description: Create a new regions
+      parameters:
+        - name: region
+          in: body
+          description: Region to create
+          required: True
+          schema:
+            type: object
+            properties:
+              region:
+                type: string
+                description: region name of region to create
+      responses:
+        201:
+          description: Successfully created person
+          schema:
+            properties:
+              regionid:
+                type: integer
+                description: Id of the region
+              region:
+                type: string
+                description: name of the region
+
+  /region/{regionid}:
+    get:
+      operationId: regions.read_one
+      tags:
+        - Region
+      summary: Read one region
+      description: Read one region
+      parameters:
+        - name: regionid
+          in: path
+          description: Id of the region to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read region from regions data operation
+          schema:
+            type: object
+            properties:
+              regionid:
+                type: integer
+                description: Id of the region
+              region:
+                type: string
+                description: name of the region
+              avocados:
+                type: array
+                items:
+                  properties:
+                    date:
+                      type: string
+                      description: date of avocado this note is associated with
+                    avgprice:
+                      type: number
+                      description: avgprice of this avocado
+                    totalvol:
+                      type: integer
+                      description: totalvol of this avocado
+                    avo_a:
+                      type: integer
+                      description: Create/Update timestamp of this note
+                    avo_b:
+                      type: number
+                      description: avo_b of avocado
+                    avo_c:
+                      type: number
+                      description: avo_c of avocad0
+                    type:
+                      type: integer
+                      description: tpe id of avocado
+                    regionid:
+                      type: integer
+                      description: region id of avocado
+
+    put:
+      operationId: regions.update
+      tags:
+        - Region
+      summary: Update a region
+      description: Update a region
+      parameters:
+        - name: regionid
+          in: path
+          description: Id the region to update
+          type: integer
+          required: True
+        - name: region
+          in: body
+          schema:
+            type: object
+            properties:
+              region:
+                type: string
+                description: name of the region
+      responses:
+        200:
+          description: Successfully updated region
+          schema:
+            properties:
+              regionid:
+                type: integer
+                description: Id of the region in the database
+              region:
+                type: string
+                description: region name of the region
+
+    delete:
+      operationId: region.delete
+      tags:
+        - Region
+      summary: Delete a region from the regions list
+      description: Delete a region
+      parameters:
+        - name: regionid
+          in: path
+          type: integer
+          description: Id of the region to delete
+          required: true
+      responses:
+        200:
+          description: Successfully deleted a region
